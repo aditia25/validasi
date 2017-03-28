@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<title>Validasi Data Melalui onsubmit</title>
+
+<script type="text/javascript" src="jquery-1.12.2.js"></script>
+
+<script type="text/javascript">
+
+function cekData()
+
+{
+
+// Cek isi kotak teks nama
+
+if (formTes.nama.value == "")
+
+{
+
+$("document").ready(function () {
+
+alert("Nama harus di isi");
+
+});
+
+formTes.nama.focus();
+
+return false;
+
+}
+
+// Cek isi kotak teks alamat
+
+if (formTes.alamat.value == "")
+
+{
+
+$("document").ready(function () {
+
+alert("Alamat harus di isi");
+
+});
+
+formTes.alamat.focus();
+
+return false;
+
+}
+
+// Cek isi kotak teks kota
+
+if (formTes.kota.value == "")
+
+{
+
+$("document").ready(function () {
+
+alert("Kota harus di isi");
+
+});
+
+formTes.kota.focus();
+
+return false;
+
+}
+
+// Cek isi kode pos
+
+if (formTes.kodepos.value.length != 5)
+
+{
+
+$("document").ready(function () {
+
+alert("Kode Pos Maksimal 5 Digit");
+
+});
+
+formTes.kodepos.focus();
+
+return false;
+
+}
+
+var kar;
+
+for (var i=0; i<formTes.kodepos.value.length; i++)
+
+{
+
+kar=formTes.kodepos.value.substr(i,1);
+
+if ((kar <="0") || (kar >= '9'))
+
+{
+
+$("document").ready(function () {
+
+alert("Kode pos harus berisi 5 angka");
+
+});
+
+formTes.kodepos.focus();
+
+return false;
+
+}
+
+}
+
+// Cek email
+
+if (formTes.email.value == "")
+
+{
+
+$("document").ready(function () {
+
+alert("Email Harus Diisi");
+
+});
+
+formTes.email.focus();
+
+return false;
+
+}
+
+var filter = new RegExp(
+
+"^([a-zA-Z0-9_\.\-])+([a-zA-Z0-9])+\@" +
+
+"(([a-zA-Z0-9\-])+\.)+" +
+
+"([a-zA-Z0-9]{2,4})+$");
+
+if (!filter.test(formTes.email.value))
+
+{
+
+$("document").ready(function () {
+
+alert("Masukkan Email yg Valid");
+
+});
+
+formTes.email.focus();
+
+return false;
+
+}
+
+// Cek Combobox Jenis Kelamin
+
+if (formTes.jk.value == "")
+
+{
+
+$("document").ready(function () {
+
+alert("Pilih Jenis Kelamin");
+
+});
+
+formTes.nama.focus();
+
+return false;
+
+}
+
+else
+
+return true;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<form name="formTes" action="" method="post" onsubmit="return cekData();">
+
+<table>
+
+<tr><td>Nama:</td><td><input type="text" name="nama" maxlength="35" size="35" /></td>
+
+<tr><td>Alamat:</td><td><input type="text" name="alamat" maxlength="60" size="60" /></td>
+
+<tr><td>Kota:</td><td><input type="text" name="kota" maxlength="20" size="20" /></td>
+
+<tr><td>Kode Pos:</td><td><input type="text" name="kodepos" maxlength="5" size="6" /></td>
+
+<tr><td>Jenis Kelamin</td>
+
+<td><select name='jk' >
+
+          <option value=''>=pilih=</option>
+
+          <option value='laki-laki'>Laki-laki</option>
+
+          <option value='perempuan'>Perempuan</option>
+
+        </select>
+
+<td>
+
+<tr><td>e-mail:</td><td><input type="text" name="email" /></td>
+
+<tr><td colspan="2"><input type="submit" value="Kirim" /></td></tr>
+
+</table>
+
+</form>
+
+</body>
+
+</html>
